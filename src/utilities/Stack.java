@@ -4,11 +4,13 @@ public class Stack {
     int[] data;
     private int capacity;
     private int size;
+    private int testVar1;
 
     public Stack(int capacity) {
         this.capacity = capacity;
         data = new int[capacity];
-        //this.size = 0;
+        //data = (E[]) (new Object[capacity]);
+        size = 0;
     }
 
     public Stack() {

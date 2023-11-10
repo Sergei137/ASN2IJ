@@ -1,9 +1,10 @@
 ### IntelliJ IDEA ###
 out/
+bin/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea
-Assignment2IJ2.iml
+Assignment2IJ.iml
 
 ### Eclipse ###
 .apt_generated
