@@ -4,9 +4,15 @@ public class Queue {
     int[] data;
     private int size;
     private int capacity;
-    private int start;
-    private int end;
 
+    // constructor
+    public Queue(int[] data, int size, int capacity) {
+        this.data = data;
+        this.size = size;
+        this.capacity = capacity;
+    }
+
+    // getter setters
     public int[] getData() {
         return data;
     }
@@ -30,21 +36,36 @@ public class Queue {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    public Queue() {
 
+    // logic
+    public Queue() {
+        this.capacity = 100;
+        data = new int[capacity];
+        size = 0;
     }
 
     public Queue (int capacity) {
-        this.capacity = 10;
+        this.capacity = capacity;
         data = new int[size];
-        end = -1;
-        start = -1;
+        size = 0;
     }
 
     public void enqueue(int element) {
-        data[++end] = element;
-
+        data[++size] = element;
     }
 
+    public void dequeue() {
+        for (int i = 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+    }
 
+    public int peek() {
+        return data[0];
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
 }
