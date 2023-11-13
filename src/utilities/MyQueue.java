@@ -1,12 +1,12 @@
 package utilities;
 
-public class Queue {
+public class MyQueue {
     int[] data;
     private int size;
     private int capacity;
 
     // constructor
-    public Queue(int[] data, int size, int capacity) {
+    public MyQueue(int[] data, int size, int capacity) {
         this.data = data;
         this.size = size;
         this.capacity = capacity;
@@ -38,13 +38,13 @@ public class Queue {
     }
 
     // logic
-    public Queue() {
+    public MyQueue() {
         this.capacity = 100;
         data = new int[capacity];
         size = 0;
     }
 
-    public Queue (int capacity) {
+    public MyQueue(int capacity) {
         this.capacity = capacity;
         data = new int[size];
         size = 0;

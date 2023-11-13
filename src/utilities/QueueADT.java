@@ -3,7 +3,6 @@ package utilities;
 import java.io.*;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.exceptions.EmptyQueueException; // change to no such element exception if not working
 
 /**
  * This is the professional Queue Interface for Advanced Object 
@@ -35,18 +34,18 @@ public interface QueueADT<E> extends Serializable
 	/**
 	 * Dequeue will remove the first item that was placed in the Queue.
 	 * @return the first item in the Queue.
-	 * @throws EmptyQueueException raised when the queue's length is zero (0).
+	 * @throws NoSuchElementException raised when the queue's length is zero (0).
 	 */
-	public E dequeue() throws EmptyQueueException;
+	public E dequeue() throws NoSuchElementException;
 	
 	/**
 	 * Peek provides a reference to the first item in the queue without
 	 * removing from the queue.
 	 * 
 	 * @return the first item in the queue.
-	 * @throws EmptyQueueException raised when the queue's length is zero (0).
+	 * @throws NoSuchElementException raised when the queue's length is zero (0).
 	 */
-	public E peek() throws EmptyQueueException;
+	public E peek() throws NoSuchElementException;
 	
 	/**
 	 * dequeueAll removes all items in the queue.

@@ -1,10 +1,10 @@
-public class DNode {
+public class MyDLLNode {
     int value;
-    DNode next, prev;
+    MyDLLNode next, prev;
 
 
 
-    public DNode(int value) {
+    public MyDLLNode(int value) {
         this.value = value;
         prev = next = null;
     }
@@ -13,11 +13,11 @@ public class DNode {
         return value;
     }
 
-    public DNode getNext() {
+    public MyDLLNode getNext() {
         return next;
     }
 
-    public DNode getPrev() {
+    public MyDLLNode getPrev() {
         return prev;
     }
 

@@ -1,8 +1,8 @@
+package utilities;
 
-
-public class DLinkedList {
+public class MyDLL {
     private int size;
-    private DNode head, tail;
+    private MyDLL head, tail;
 
     
     
@@ -10,7 +10,7 @@ public class DLinkedList {
         
     }
 
-    public DNode getHead() {
+    public MyDLL getHead() {
         return head;
     }
 
@@ -18,7 +18,7 @@ public class DLinkedList {
         return size;
     }
 
-    public void add(DNode node) {
+    public void add(MyDLL node) {
         if (isEmpty()) {
             head = tail = node;
         } else if (size == 1) {
@@ -43,7 +43,7 @@ public class DLinkedList {
     @Override
     public String toString() {
         String info = "";
-        DNode node = head;
+        MyDLL node = head;
         for (int i = 0; i < size; i++) {
             info += node.toString() + "\n";
             node = node.getNext();
