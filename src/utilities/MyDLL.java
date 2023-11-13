@@ -4,7 +4,7 @@ public class MyDLL {
     private int size;
     private MyDLL head, tail;
 
-    
+    //push test
     
     public void DLinkedList() {
         
