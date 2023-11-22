@@ -3,7 +3,7 @@ package utilities;
 import java.util.NoSuchElementException;
 
 /**
- * This interface will provide an mono-directional iterator for any of the
+ * This interface will provide a mono-directional iterator for any of the
  * data structures that are specified in this package. The implementor is 
  * only responsible for the simple methods. A more functional iterator is 
  * available in the <code>java.util</code> package.
@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
  *
  * @param <E> The type of element this iterator returns. 
  */
-public interface Iterator<E> 
+public interface Iterator<E>
 {	
 	/**
 	 * Returns <code>true</code> if the iteration has more elements. 

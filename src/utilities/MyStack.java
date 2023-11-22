@@ -1,92 +1,147 @@
 package utilities;
 
+import java.util.NoSuchElementException;
+import java.util.Arrays; // might not need this
+
 public class MyStack<E> implements StackADT<E> {
-    int[] data;
+    private E[] data; // should this be final instead of private?
     private int capacity; // should this be final instead of private?
     private int size;
-    private int testVar1;
 
-    //
+    // constructor
     public MyStack(int capacity) {
         this.capacity = capacity;
-        data = new int[capacity];
-        //data = (E[]) (new Object[capacity]); // what does this do?
+        data = (E[]) new Object[capacity];
         size = 0;
     }
 
-    // what does this do?
+    // constructor
     public MyStack() {
-        this.capacity = 10;
-        data = new int[capacity];
+        this.capacity = 10000;
+        data = (E[]) new Object[capacity];
+        size = 0;
     }
 
-    //
+    // return capacity of stack
     public int getCapacity() {
         return capacity;
     }
 
-    //
+    // return size of stack
     public int getSize() {
         return size;
     }
 
-    //
-    public void push (int element) {
-        data[size] = element;
-        size++;
-    }
-
-    //
-    public int peek () {
-        return data[size - 1];
-    }
-
-    //
-    public void pop () {
-        size--;
-    }
-
-    //
-    public int size() {
-        return 0;
-    }
-
-    //
-    public void clear() {
-        size = 0;
-    }
-
-    //
+    // return true if stack is empty
     public boolean isEmpty() {
         return size == 0;
     }
 
-    //
+    // compare two stacks and return
     public boolean equals( StackADT<E> that ) {
         return false;
     }
 
-    //
+    // add element to top of stack
+    public void push(E toAdd) throws NullPointerException {
+        data[size] = toAdd;
+        size++;
+    }
+
+    // return top element of stack without removing it
+    public E peek () {
+        return data[size - 1];
+    }
+
+    // remove top element of stack and return it
+    public E pop () {
+        size--;
+        return data[size];
+    }
+
+    // return size of stack
+    public int size() {
+        return size;
+    }
+
+    // remove all elements from stack
+    public void clear() {
+        size = 0;
+    }
+
+    // return array of stack elements
     public Object[] toArray() {
-        return null;
+        Object[] result = new Object[size];
+        System.arraycopy(data, 0, result, 0, size);
+        return result;
     }
 
+    // NOT SURE IF THIS IS CORRECT
     public E[] toArray( E[] toHold ) throws NullPointerException {
-        return null;
+        if (toHold == null) {
+            throw new NullPointerException("Input array cannot be null");
+        }
+
+        if (toHold.length < size) {
+            // If toHold is not big enough, allocate a new array of the same runtime type
+            toHold = Arrays.copyOf(toHold, size);
+        }
+        System.arraycopy(data, 0, toHold, 0, size);
+        if (toHold.length > size) {
+            toHold[size] = null;  // If toHold has more elements than the stack, set the element following the stack elements to null
+        }
+        return toHold;
     }
 
+    //
     public boolean contains( E toFind ) throws NullPointerException {
+        if (toFind == null) {
+            throw new NullPointerException("Input cannot be null");
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (data[i].equals(toFind)) {
+                return true;
+            }
+        }
         return false;
     }
 
+    //
     public int search( E toFind ) {
-        return 0;
+        for (int i = size - 1; i >= 0; i--) {
+            if (data[i].equals(toFind)) {
+                return size - i;
+            }
+        }
+        return -1;
     }
 
+    //
     public Iterator<E> iterator() {
-        return null;
+        return new MyStackIterator(data, size);
     }
 
+    private class MyStackIterator implements Iterator<E> {
+        private int index;
+        private E[] data;
+        private int size;
 
+        public MyStackIterator(E[] data, int size) {
+            this.data = data;
+            this.size = size;
+            index = 0;
+        }
 
+        public boolean hasNext() {
+            return index < size;
+        }
+
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("No more elements");
+            }
+            return data[index++];
+        }
+    }
 }
