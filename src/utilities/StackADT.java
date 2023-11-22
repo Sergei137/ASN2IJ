@@ -9,7 +9,6 @@ import java.io.*;
  * This Stack embodies all the standard Stack operations, 
  * and includes several helper methods that will 
  * give the data structure more flexibility and use.
- * 
  * Created On: June 4, 2004
  * Updated On: Aug. 18, 2009
  * Updated On: Nov 15, 2018 by kitty
@@ -33,17 +32,15 @@ public interface StackADT<E> extends Serializable
 	/**
 	 * Removes the object at the top of this stack and returns that object as
 	 * the value of this function.
-	 * 
 	 * @return the item popped off the top of the stack.
-	 * @throws EmptyStackException
-	 *             if there are not items in the stack.
+	 * @throws EmptyStackException if there are no items in the stack.
 	 */
 	public E pop() throws EmptyStackException;
 
 	/**
 	 * Looks at the object at the top of this stack without removing it from the
 	 * stack.
-	 * 
+	 *
 	 * @return the object at the top of this stack.
 	 * @throws EmptyStackException
 	 */
@@ -85,7 +82,7 @@ public interface StackADT<E> extends Serializable
 	 * @throws NullPointerException
 	 *             if the specified array is null.
 	 */
-	public E[] toArray( E[] holder ) throws NullPointerException;
+	public E[] toArray( E[] toHold ) throws NullPointerException;
 
 	/**
 	 * Returns true if this list contains the specified element. More formally,
