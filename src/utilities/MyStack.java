@@ -8,16 +8,16 @@ public class MyStack<E> implements StackADT<E> {
     private int capacity; // should this be final instead of private?
     private int size;
 
-    // constructor
-    public MyStack(int capacity) {
-        this.capacity = capacity;
+    // constructor 1
+    public MyStack() {
+        this.capacity = 10000;
         data = (E[]) new Object[capacity];
         size = 0;
     }
 
-    // constructor
-    public MyStack() {
-        this.capacity = 10000;
+    // constructor 2
+    public MyStack(int capacity) {
+        this.capacity = capacity;
         data = (E[]) new Object[capacity];
         size = 0;
     }
@@ -35,11 +35,6 @@ public class MyStack<E> implements StackADT<E> {
     // return true if stack is empty
     public boolean isEmpty() {
         return size == 0;
-    }
-
-    // compare two stacks and return
-    public boolean equals( StackADT<E> that ) {
-        return false;
     }
 
     // add element to top of stack
@@ -69,6 +64,32 @@ public class MyStack<E> implements StackADT<E> {
         size = 0;
     }
 
+    // compare two stacks and return true if they are equal
+    public boolean equals(StackADT<E> comparedStack) {
+        // if comparedStack is null, return false
+        if (comparedStack == null) {
+            return false;
+        }
+
+        // if comparedStack is not an instance of MyStack, return false
+        if (!(comparedStack instanceof MyStack<E> thatStack)) {
+            return false;
+        }
+
+        // if comparedStack is not the same size as this stack, return false
+        if (this.size != thatStack.size) {
+            return false;
+        }
+
+        // if comparedStack is the same size as this stack, compare each element
+        for (int i = 0; i < this.size; i++) {
+            if (!this.data[i].equals(thatStack.data[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // return array of stack elements
     public Object[] toArray() {
         Object[] result = new Object[size];
@@ -76,8 +97,8 @@ public class MyStack<E> implements StackADT<E> {
         return result;
     }
 
-    // NOT SURE IF THIS IS CORRECT
-    public E[] toArray( E[] toHold ) throws NullPointerException {
+    // return array of stack elements
+    public E[] toArray(E[] toHold) throws NullPointerException {
         if (toHold == null) {
             throw new NullPointerException("Input array cannot be null");
         }
@@ -86,15 +107,17 @@ public class MyStack<E> implements StackADT<E> {
             // If toHold is not big enough, allocate a new array of the same runtime type
             toHold = Arrays.copyOf(toHold, size);
         }
+
         System.arraycopy(data, 0, toHold, 0, size);
         if (toHold.length > size) {
-            toHold[size] = null;  // If toHold has more elements than the stack, set the element following the stack elements to null
+            // If toHold has more elements than the stack, set the element following the stack elements to null
+            toHold[size] = null;
         }
         return toHold;
     }
 
-    //
-    public boolean contains( E toFind ) throws NullPointerException {
+    // return true if stack contains element
+    public boolean contains(E toFind) throws NullPointerException {
         if (toFind == null) {
             throw new NullPointerException("Input cannot be null");
         }
@@ -107,8 +130,9 @@ public class MyStack<E> implements StackADT<E> {
         return false;
     }
 
-    //
-    public int search( E toFind ) {
+    // return 1-based element position from top of stack
+    public int search(E toFind) {
+        // size - 1 sets i to top element of stack
         for (int i = size - 1; i >= 0; i--) {
             if (data[i].equals(toFind)) {
                 return size - i;
@@ -117,7 +141,8 @@ public class MyStack<E> implements StackADT<E> {
         return -1;
     }
 
-    //
+    // return iterator over elements in stack
+    @Override
     public Iterator<E> iterator() {
         return new MyStackIterator(data, size);
     }
