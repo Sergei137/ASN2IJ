@@ -12,6 +12,8 @@ public class MyDLL {
         return head;
     }
 
+    public MyDLL getNext() { return null; }
+
     public int getSize() {
         return size;
     }
@@ -20,8 +22,6 @@ public class MyDLL {
         if (isEmpty()) {
             head = tail = node;
         } else if (size == 1) {
-
-
 
             // tail.next = node;
             // node.prev = tail;
@@ -32,6 +32,12 @@ public class MyDLL {
             tail = node;
         }
         size++;
+    }
+
+    private void setNext(MyDLL node) {
+    }
+
+    private void setPrev(MyDLL tail) {
     }
 
     public boolean isEmpty() {
@@ -48,4 +54,6 @@ public class MyDLL {
         }
         return info;
     }
+
+
 }
