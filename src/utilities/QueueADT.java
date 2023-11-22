@@ -97,7 +97,7 @@ public interface QueueADT<E> extends Serializable
 	 * @throws NullPointerException
 	 *          if the specified array is null.
 	 */
-	public E[] toArray( E[] holder ) throws NullPointerException;
+	public E[] toArray( E[] toHold ) throws NullPointerException;
 	
 	/**
 	 * (Optional Method) Returns true if the number of items in the queue

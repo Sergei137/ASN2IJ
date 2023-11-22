@@ -1,7 +1,6 @@
 package utilities;
 
 import java.util.NoSuchElementException;
-import java.util.Arrays; // might not need this
 
 public class MyStack<E> implements StackADT<E> {
     private E[] data; // should this be final instead of private?
@@ -98,21 +97,25 @@ public class MyStack<E> implements StackADT<E> {
     }
 
     // return array of stack elements
+    @Override
     public E[] toArray(E[] toHold) throws NullPointerException {
         if (toHold == null) {
             throw new NullPointerException("Input array cannot be null");
         }
 
+        // If toHold is not big enough, allocate a new array of the same runtime type
         if (toHold.length < size) {
-            // If toHold is not big enough, allocate a new array of the same runtime type
-            toHold = Arrays.copyOf(toHold, size);
+            toHold = (E[]) new Object[size];
         }
 
-        System.arraycopy(data, 0, toHold, 0, size);
-        if (toHold.length > size) {
-            // If toHold has more elements than the stack, set the element following the stack elements to null
-            toHold[size] = null;
+        // Copy elements from data to toHold with same order
+        if (size >= 0) System.arraycopy(data, 0, toHold, 0, size);
+
+        // If toHold has more elements than the stack, set the additional elements to null
+        for (int i = size; i < toHold.length; i++) {
+            toHold[i] = null;
         }
+
         return toHold;
     }
 
