@@ -133,5 +133,5 @@ public interface StackADT<E> extends Serializable
 	 * Returns the depth of the current stack as an integer value.
 	 * @return the current size to the stack as an integer.
 	 */
-	public int size();
+	public int getSize();
 }

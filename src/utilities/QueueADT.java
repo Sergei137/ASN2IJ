@@ -1,7 +1,6 @@
 package utilities;
 
 import java.io.*;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -111,5 +110,5 @@ public interface QueueADT<E> extends Serializable
 	 * Returns the length of the current queue as an integer value.
 	 * @return the current size to the queue as an integer.
 	 */
-	public int size();
+	public int getSize();
 }

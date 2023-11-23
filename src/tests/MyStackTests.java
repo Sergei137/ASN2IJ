@@ -6,39 +6,35 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MyStackTests {
-    @Test
-    public void testConstructor1() {
-        MyStack stack = new MyStack();
-        assertEquals(10000, stack.getCapacity());
-    }
 
     @Test
-    public void testConstructor2() {
+    public void testConstructor() {
         MyStack stack = new MyStack(5);
         assertEquals(5, stack.getCapacity());
     }
 
     @Test
     public void testGetCapacity() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(10000);
         assertEquals(10000, stack.getCapacity());
     }
 
     @Test
     public void testGetSize() {
-        MyStack stack = new MyStack();
-        assertEquals(0, stack.getSize());
+        MyStack stack = new MyStack(1);
+        stack.push(1);
+        assertEquals(1, stack.getSize());
     }
 
     @Test
     public void testIsEmpty() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(0);
         assertTrue(stack.isEmpty());
     }
 
     @Test
     public void testPush() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(3);
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -47,7 +43,7 @@ public class MyStackTests {
 
     @Test
     public void testPeek() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(3);
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -56,7 +52,7 @@ public class MyStackTests {
 
     @Test
     public void testPop() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(3);
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -65,15 +61,8 @@ public class MyStackTests {
     }
 
     @Test
-    public void testSize() {
-        MyStack stack = new MyStack();
-        stack.push(1);
-        assertEquals(1, stack.size());
-    }
-
-    @Test
     public void testClear() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(1);
         stack.push(1);
         stack.clear();
         assertEquals(0, stack.getSize());
@@ -81,14 +70,14 @@ public class MyStackTests {
 
     @Test
     public void testEquals() {
-        MyStack stack = new MyStack();
-        MyStack stack2 = new MyStack();
+        MyStack stack = new MyStack(1);
+        MyStack stack2 = new MyStack(1);
         assertTrue(stack.equals(stack2));
     }
 
     @Test
     public void testToArray1() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(3);
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -98,7 +87,7 @@ public class MyStackTests {
 
     @Test
     public void testToArray2() {
-        MyStack<Integer> stack = new MyStack<>();
+        MyStack<Integer> stack = new MyStack<>(5);
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -118,7 +107,7 @@ public class MyStackTests {
 
     @Test
     public void testContains() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(3);
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -127,7 +116,7 @@ public class MyStackTests {
 
     @Test
     public void testSearch() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(5);
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -138,7 +127,7 @@ public class MyStackTests {
 
     @Test
     public void testIterator() {
-        MyStack stack = new MyStack();
+        MyStack stack = new MyStack(3);
         stack.push(1);
         stack.push(2);
         stack.push(3);
