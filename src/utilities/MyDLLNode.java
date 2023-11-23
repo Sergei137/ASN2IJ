@@ -1,34 +1,44 @@
-public class MyDLLNode {
-    int value;
-    MyDLLNode next, prev;
+package utilities;
 
+public class MyDLLNode<E>{
 
+    private E item;
+    private MyDLLNode<E> next;
+    private MyDLLNode<E> prev;
 
-    public MyDLLNode(int value) {
-        this.value = value;
-        prev = next = null;
+    public MyDLLNode(E item, MyDLLNode<E> next, MyDLLNode<E> prev){
+        this.item = item;
+        this.next = next;
+        this.prev = prev;
+    }
+    public MyDLLNode(E item){
+        this.item = item;
+        this.next = null;
+        this.prev = null;
     }
 
-    public int getValue() {
-        return value;
+    public E getItem(){
+        return item;
     }
 
-    public MyDLLNode getNext() {
+    public void setItem(E item){
+        this.item = item;
+    }
+
+    public MyDLLNode<E> getNext(){
         return next;
     }
 
-    public MyDLLNode getPrev() {
-        return prev;
+    public void setNext(MyDLLNode<E> next){
+        this.next = next;
+    }
+    public MyDLLNode<E> getPrev(){
+        return  prev;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setPrev(MyDLLNode<E> prev){
+        this.prev = prev;
     }
-
-
-
-
-
 
 
 }

@@ -1,5 +1,7 @@
 package utilities;
 
+// import utilities.StackADT;
+
 public class MyStack<E> implements StackADT<E> {
     int[] data;
     private int capacity; // should this be final instead of private?
