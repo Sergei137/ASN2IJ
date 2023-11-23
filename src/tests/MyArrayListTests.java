@@ -1,6 +1,5 @@
 package tests;
 
-
 import utilities.Iterator;
 import utilities.MyArrayList;
 import utilities.ListADT;

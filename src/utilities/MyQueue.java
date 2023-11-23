@@ -124,31 +124,23 @@ public class MyQueue<E> implements QueueADT<E>{
 
     @Override
     public Iterator<E> iterator() {
-        return new MyQueueIterator(data, size);
-    }
+        return new Iterator<>() {
+            private int index;
 
-    private class MyQueueIterator implements Iterator<E> {
-        private int index;
-        private E[] data;
-        private int size;
-
-        public MyQueueIterator(E[] data, int size) {
-            this.data = data;
-            this.size = size;
-            index = 0;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return index < size;
-        }
-
-        @Override
-        public E next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException("No more elements");
+            // checks if there is another element in stack
+            @Override
+            public boolean hasNext() {
+                return index < size;
             }
-            return data[index++];
-        }
+
+            // moves index to next element in stack
+            @Override
+            public E next() throws NoSuchElementException {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("No more elements");
+                }
+                return data[index++];
+            }
+        };
     }
 }
