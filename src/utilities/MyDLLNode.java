@@ -18,7 +18,7 @@ public class MyDLLNode<E>{
     }
 
     public E getItem(){
-        return item;
+        return this.item;
     }
 
     public void setItem(E item){
@@ -40,5 +40,5 @@ public class MyDLLNode<E>{
         this.prev = prev;
     }
 
-
+    
 }
