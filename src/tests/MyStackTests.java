@@ -11,6 +11,7 @@ public class MyStackTests {
     public void testConstructor() {
         MyStack stack = new MyStack(5);
         assertEquals(5, stack.getCapacity());
+        assertTrue(stack.isEmpty());
     }
 
     @Test

@@ -4,8 +4,8 @@ import java.util.NoSuchElementException;
 
 public class MyQueue<E> implements QueueADT<E>{
     private E[] data;
-    private int size;
     private int capacity;
+    private int size;
 
     // constructor
     @SuppressWarnings("unchecked")

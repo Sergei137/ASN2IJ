@@ -5,9 +5,10 @@ import java.util.NoSuchElementException;
 
 public class MyStack<E> implements StackADT<E> {
     private E[] data;
-    private int size;
     private int capacity;
-    
+    private int size;
+
+
     // constructor
     @SuppressWarnings("unchecked")
     public MyStack(int capacity) {
