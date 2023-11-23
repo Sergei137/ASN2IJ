@@ -25,11 +25,11 @@ public class MyQueue<E> implements QueueADT<E>{
     }
 
     @Override
-    public void enqueue(E element) throws NullPointerException {
-        if (element == null) {
+    public void enqueue(E toAdd) throws NullPointerException {
+        if (toAdd == null) {
             throw new NullPointerException("Input cannot be null");
         }
-        data[size++] = element;
+        data[size++] = toAdd;
     }
 
     @Override

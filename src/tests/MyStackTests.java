@@ -133,6 +133,7 @@ public class MyStackTests {
         stack.push(2);
         stack.push(3);
         assertEquals(1, stack.iterator().next());
+        assertTrue(stack.iterator().hasNext());
     }
 }
 
