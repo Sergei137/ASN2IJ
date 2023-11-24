@@ -145,24 +145,7 @@ public class MyStack<E> implements StackADT<E> {
     // return iterator over elements in stack
     @Override
     public Iterator<E> iterator() {
-//        return new Iterator<>() {
-//            private int index;
-//
-//            // checks if there is another element in stack
-//            @Override
-//            public boolean hasNext() {
-//                return index < size;
-//            }
-//
-//            // moves index to next element in stack
-//            @Override
-//            public E next() throws NoSuchElementException {
-//                if (!hasNext()) {
-//                    throw new NoSuchElementException("No more elements");
-//                }
-//                return data.get(index++);
-//            }
-//        };
+
         return data.iterator();
     }
 }
