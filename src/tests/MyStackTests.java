@@ -40,6 +40,7 @@ public class MyStackTests {
         stack.push(2);
         stack.push(3);
         assertEquals(3, stack.peek());
+        assertEquals(3, stack.getSize());
     }
 
     @Test
@@ -59,12 +60,16 @@ public class MyStackTests {
         stack.push(3);
         stack.pop();
         assertEquals(2, stack.getSize());
+        stack.pop();
+        assertEquals(1, stack.getSize());
     }
 
     @Test
     public void testClear() {
         MyStack stack = new MyStack(1);
         stack.push(1);
+        stack.push(2);
+        stack.push(3);
         stack.clear();
         assertEquals(0, stack.getSize());
     }
