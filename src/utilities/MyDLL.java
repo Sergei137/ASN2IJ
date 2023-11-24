@@ -192,6 +192,7 @@ public class MyDLL<E> implements ListADT<E> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public E[] toArray(E[] toHold) throws NullPointerException {
         if (toHold.length < size) {
             toHold = (E[]) java.lang.reflect.Array.newInstance(
