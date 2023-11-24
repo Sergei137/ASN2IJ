@@ -3,7 +3,8 @@ package utilities;
 import java.util.NoSuchElementException;
 
 public class MyQueue<E> implements QueueADT<E>{
-    private E[] data;
+   // private E[] data;
+    private MyDLL<E> QueueList;
     private int capacity;
     private int size;
 
@@ -11,7 +12,7 @@ public class MyQueue<E> implements QueueADT<E>{
     @SuppressWarnings("unchecked")
     public MyQueue(int capacity) {
         this.capacity = capacity;
-        data = (E[]) new Object[capacity];
+        QueueList = new MyDLL<>();
         size = 0;
     }
 
@@ -29,7 +30,8 @@ public class MyQueue<E> implements QueueADT<E>{
         if (toAdd == null) {
             throw new NullPointerException("Input cannot be null");
         }
-        data[size++] = toAdd;
+        QueueList.add(toAdd);
+        size++;
     }
 
     @Override
@@ -37,18 +39,16 @@ public class MyQueue<E> implements QueueADT<E>{
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        E dequeued = data[0];
-        for (int i = 1; i < size; i++) {
-            data[i - 1] = data[i];
-        }
-        size--;
+
+        E dequeued = QueueList.get(0);
+        QueueList.remove(0);
         return dequeued;
     }
 
     @Override
     public void dequeueAll() {
+        QueueList.clear();
         size = 0;
-        //data = null; // is this correct?
     }
 
     @Override
@@ -56,16 +56,18 @@ public class MyQueue<E> implements QueueADT<E>{
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        return data[0];
+        return QueueList.get(0);
     }
 
     @Override
     public boolean isEmpty() {
+
         return size == 0;
     }
 
     @Override
     public boolean isFull() {
+
         return size == capacity;
     }
 
@@ -79,24 +81,33 @@ public class MyQueue<E> implements QueueADT<E>{
             return false;
         }
 
+        MyQueue<?> otherQueue = (MyQueue<?>) that;
+
         if (this.size != thisQueue.size) {
             return false;
         }
 
-        for (int i = 0; i < this.size; i++) {
-            if (!this.data[i].equals(thisQueue.data[i])) {
+        Iterator<E> thisIterator = this.iterator();
+        Iterator<?> otherIterator = otherQueue.iterator();
+
+        while (thisIterator.hasNext()) {
+            E thisElement = thisIterator.next();
+            Object otherElement = otherIterator.next();
+
+            if (!thisElement.equals(otherElement)) {
                 return false;
             }
         }
+
+
 
         return true;
     }
 
     @Override
     public Object[] toArray() {
-        Object[] result = new Object[size];
-        System.arraycopy(data, 0, result, 0, size);
-        return result;
+
+        return QueueList.toArray();
     }
 
     @Override
@@ -111,10 +122,13 @@ public class MyQueue<E> implements QueueADT<E>{
             toHold = (E[]) new Object[size];
         }
 
-        // Copy elements from data to toHold with same order
-        if (size >= 0) System.arraycopy(data, 0, toHold, 0, size);
 
-        // If toHold has more elements than the stack, set the additional elements to null
+        Iterator<E> iterator = iterator();
+        for (int i = 0; i < size; i++) {
+            toHold[i] = iterator.next();
+        }
+
+        // If toHold has more elements than the queue, set the additional elements to null
         for (int i = size; i < toHold.length; i++) {
             toHold[i] = null;
         }
@@ -124,23 +138,7 @@ public class MyQueue<E> implements QueueADT<E>{
 
     @Override
     public Iterator<E> iterator() {
-        return new Iterator<>() {
-            private int index;
 
-            // checks if there is another element in stack
-            @Override
-            public boolean hasNext() {
-                return index < size;
-            }
-
-            // moves index to next element in stack
-            @Override
-            public E next() throws NoSuchElementException {
-                if (!hasNext()) {
-                    throw new NoSuchElementException("No more elements");
-                }
-                return data[index++];
-            }
-        };
+        return QueueList.iterator();
     }
 }

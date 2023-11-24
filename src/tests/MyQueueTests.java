@@ -22,7 +22,8 @@ public class MyQueueTests {
 
     @Test
     public void testGetSize() {
-        MyQueue queue = new MyQueue<>(1);
+        //MyQueue queue = new MyQueue<>(1);
+        MyQueue<Integer> queue = new MyQueue<>(1);
         queue.enqueue(1);
         assertEquals(1, queue.getSize());
     }
@@ -33,7 +34,7 @@ public class MyQueueTests {
         queue.enqueue(1);
         queue.enqueue(2);
         queue.enqueue(3);
-        assertEquals(1, queue.peek());
+        assertEquals(3, queue.getSize());
     }
 
     @Test
@@ -43,6 +44,8 @@ public class MyQueueTests {
         queue.enqueue(2);
         queue.enqueue(3);
         assertEquals(1, queue.dequeue());
+        assertEquals(2, queue.dequeue());
+        assertEquals(3, queue.dequeue());
     }
 
     @Test
