@@ -1,8 +1,6 @@
 package utilities;
 
-import java.util.NoSuchElementException;
-
-import utilities.MyArrayList;
+import java.util.EmptyStackException;
 
 public class MyStack<E> implements StackADT<E> {
     private final MyArrayList<E> data;
@@ -33,17 +31,26 @@ public class MyStack<E> implements StackADT<E> {
 
     // add element to top of stack
     public void push(E toAdd) throws NullPointerException {
+        if (toAdd == null) {
+            throw new NullPointerException("Input element cannot be null");
+        }
         data.add(toAdd);
         size++;
     }
 
     // return top element of stack without removing it
-    public E peek () {
+    public E peek () throws EmptyStackException {
+        if (data.isEmpty()) {
+            throw new EmptyStackException();
+        }
         return data.get(size - 1);
     }
 
     // remove top element of stack and return it
-    public E pop () {
+    public E pop () throws EmptyStackException {
+        if (data.isEmpty()) {
+            throw new EmptyStackException();
+        }
         data.remove(size - 1);
         size--;
         return data.get(size - 1);
