@@ -236,7 +236,30 @@ public class MyArrayList<E> implements ListADT<E>{
     // Returns an iterator over the elements in the list
     @Override
     public Iterator<E> iterator(){
-        return new MyIterator();
+        return new Iterator<>() {
+
+            // Index of the current element in the iteration
+            private int currentIndex = 0;
+
+            // Checks if there is a next element in the iteration
+            @Override
+            public boolean hasNext() {
+                return currentIndex < size;
+            }
+
+            // Returns the next element in the iteration
+            @Override
+            @SuppressWarnings("unchecked")
+            public E next(){
+                // Throw an exception if there is no next element
+                if(!hasNext()){
+                    throw new NoSuchElementException("No elements in the list");
+                }
+
+                // Retrieve the next element, increment the index, and update the hasNext flag
+                return (E) array[currentIndex++];
+            }
+        };
     }
 
     // Ensures that the internal array has sufficient capacity for the specified minimum capacity
@@ -263,42 +286,6 @@ public class MyArrayList<E> implements ListADT<E>{
     private static void clearArray(Object[] array){
         for(int i = 0; i < array.length; i++){
             array[i] = null;
-        }
-    }
-
-    // Inner class representing an iterator over the elements in the list
-    private class MyIterator implements Iterator<E>{
-
-        // Index of the current element in the iteration
-        private int currentIndex = 0;
-
-        // Flag indicating whether there is a next element
-        private boolean hasNext = true;
-
-        // Checks if there is a next element in the iteration
-        @Override
-        public boolean hasNext(){
-            return hasNext;
-        }
-
-        // Returns the next element in the iteration
-        @Override
-        @SuppressWarnings("unchecked")
-        public E next(){
-            // Throw an exception if there is no next element
-            if(!hasNext()){
-                throw new NoSuchElementException("No elements in the list");
-            }
-
-            // Retrieve the next element, increment the index, and update the hasNext flag
-            E nextElement = (E) array[currentIndex];
-
-            currentIndex ++;
-            if(currentIndex == size){
-                hasNext = false;
-            }
-
-            return nextElement;
         }
     }
 }
