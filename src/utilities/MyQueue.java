@@ -92,6 +92,7 @@ public class MyQueue<E> implements QueueADT<E>{
         // Cast thatQueue to MyQueue ????????????
         MyQueue<?> otherQueue = (MyQueue<?>) thatQueue;
 
+        // If thatQueue is not the same as thisQueue, return false
         if (this.size != thisQueue.size) {
             return false;
         }
@@ -109,6 +110,7 @@ public class MyQueue<E> implements QueueADT<E>{
                 return false;
             }
         }
+
         return true;
     }
 

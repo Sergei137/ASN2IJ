@@ -21,16 +21,19 @@ public class MyStack<E> implements StackADT<E> {
     }
 
     // Return size of stack
+    @Override
     public int getSize() {
         return data.size();
     }
 
     // Checks size and returns true if stack is empty
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
     // Add element to top of stack
+    @Override
     public void push(E toAdd) throws NullPointerException {
         if (toAdd == null) {
             throw new NullPointerException("Input element cannot be null");
@@ -40,6 +43,7 @@ public class MyStack<E> implements StackADT<E> {
     }
 
     // Return top element of stack without removing it
+    @Override
     public E peek () throws EmptyStackException {
         if (data.isEmpty()) {
             throw new EmptyStackException();
@@ -48,6 +52,7 @@ public class MyStack<E> implements StackADT<E> {
     }
 
     // Remove top element from the stack and return removed element
+    @Override
     public E pop () throws EmptyStackException {
         if (data.isEmpty()) {
             throw new EmptyStackException();
@@ -58,6 +63,7 @@ public class MyStack<E> implements StackADT<E> {
     }
 
     // Remove all elements from stack
+    @Override
     public void clear() {
         data.clear(); // clear stack
         size = 0; // clear size
@@ -65,6 +71,7 @@ public class MyStack<E> implements StackADT<E> {
     }
 
     // Compare two stacks and return true if they are equal
+    @Override
     public boolean equals(StackADT<E> thatStack) {
         // If thatStack is null, return false
         if (thatStack == null) {
@@ -87,10 +94,12 @@ public class MyStack<E> implements StackADT<E> {
                 return false;
             }
         }
+
         return true;
     }
 
     // Return array of stack elements
+    @Override
     public Object[] toArray() {
         Object[] result = new Object[size]; // create new Object array
 
@@ -129,6 +138,7 @@ public class MyStack<E> implements StackADT<E> {
     }
 
     // Return boolean true if stack contains element
+    @Override
     public boolean contains(E toFind) throws NullPointerException {
         if (toFind == null) {
             throw new NullPointerException("Input cannot be null");
@@ -145,6 +155,7 @@ public class MyStack<E> implements StackADT<E> {
     }
 
     // Return 1-based element position from top of stack
+    @Override
     public int search(E toFind) {
         // size - 1 sets i to top element of stack
         for (int i = size - 1; i >= 0; i--) {
