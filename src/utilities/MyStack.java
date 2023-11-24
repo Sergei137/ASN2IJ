@@ -2,34 +2,35 @@ package utilities;
 
 import java.util.EmptyStackException;
 
+// MyStack uses methods in MyArrayList to manipulate the stack.
 public class MyStack<E> implements StackADT<E> {
     private final MyArrayList<E> data;
     private int capacity;
     private int size;
 
-    // constructor
+    // Constructor
     public MyStack(int capacity) {
         this.capacity = capacity;
         this.data = new MyArrayList<>();
         this.size = data.size();
     }
 
-    // return capacity of stack
+    // Return capacity of stack
     public int getCapacity() {
         return capacity;
     }
 
-    // return size of stack
+    // Return size of stack
     public int getSize() {
         return data.size();
     }
 
-    // return true if stack is empty
+    // Checks size and returns true if stack is empty
     public boolean isEmpty() {
         return size == 0;
     }
 
-    // add element to top of stack
+    // Add element to top of stack
     public void push(E toAdd) throws NullPointerException {
         if (toAdd == null) {
             throw new NullPointerException("Input element cannot be null");
@@ -38,7 +39,7 @@ public class MyStack<E> implements StackADT<E> {
         size++;
     }
 
-    // return top element of stack without removing it
+    // Return top element of stack without removing it
     public E peek () throws EmptyStackException {
         if (data.isEmpty()) {
             throw new EmptyStackException();
@@ -46,59 +47,62 @@ public class MyStack<E> implements StackADT<E> {
         return data.get(size - 1);
     }
 
-    // remove top element of stack and return it
+    // Remove top element from the stack and return removed element
     public E pop () throws EmptyStackException {
         if (data.isEmpty()) {
             throw new EmptyStackException();
         }
-        data.remove(size - 1);
-        size--;
+        data.remove(size - 1); // remove element from stack
+        size--; // decrease size in stack
         return data.get(size - 1);
     }
 
-    // remove all elements from stack
+    // Remove all elements from stack
     public void clear() {
-        data.clear();
-        size = 0;
-        capacity = 0;
+        data.clear(); // clear stack
+        size = 0; // clear size
+        capacity = 0; // cleae capacity
     }
 
-    // compare two stacks and return true if they are equal
-    public boolean equals(StackADT<E> comparedStack) {
-        // if comparedStack is null, return false
-        if (comparedStack == null) {
+    // Compare two stacks and return true if they are equal
+    public boolean equals(StackADT<E> thatStack) {
+        // If thatStack is null, return false
+        if (thatStack == null) {
             return false;
         }
 
-        // if comparedStack is not an instance of MyStack, return false
-        if (!(comparedStack instanceof MyStack<E> thatStack)) {
+        // If thisStack is not an instance of MyStack, return false
+        if (!(thatStack instanceof MyStack<E> thisStack)) {
             return false;
         }
 
-        // if comparedStack is not the same size as this stack, return false
-        if (this.size != thatStack.size) {
+        // If thatStack is not the same size as thisStack, return false
+        if (this.size != thisStack.size) {
             return false;
         }
 
-        // if comparedStack is the same size as this stack, compare each element
+        // If thatStack is the same size as thisStack, compare each element
         for (int i = 0; i < this.size; i++) {
-            if (!this.data.get(i).equals(thatStack.data.get(i))) {
+            if (!this.data.get(i).equals(thisStack.data.get(i))) {
                 return false;
             }
         }
         return true;
     }
 
-    // return array of stack elements
+    // Return array of stack elements
     public Object[] toArray() {
-        Object[] result = new Object[size];
+        Object[] result = new Object[size]; // create new Object array
+
+        // iterate through data and add each element to new array
         for (int i = 0; i < size; i++) {
             result[i] = data.get(i);
         }
+
         return result;
     }
 
-    // return array of stack elements
+    // Return array of stack elements
     @Override
     @SuppressWarnings("unchecked")
     public E[] toArray(E[] toHold) throws NullPointerException {
@@ -124,21 +128,23 @@ public class MyStack<E> implements StackADT<E> {
         return toHold;
     }
 
-    // return true if stack contains element
+    // Return boolean true if stack contains element
     public boolean contains(E toFind) throws NullPointerException {
         if (toFind == null) {
             throw new NullPointerException("Input cannot be null");
         }
 
+        // Iterate though stack until element is found, return false if element is not found
         for (int i = 0; i < size; i++) {
             if (data.get(i).equals(toFind)) {
                 return true;
             }
         }
+
         return false;
     }
 
-    // return 1-based element position from top of stack
+    // Return 1-based element position from top of stack
     public int search(E toFind) {
         // size - 1 sets i to top element of stack
         for (int i = size - 1; i >= 0; i--) {
@@ -146,13 +152,13 @@ public class MyStack<E> implements StackADT<E> {
                 return size - i;
             }
         }
+
         return -1;
     }
 
-    // return iterator over elements in stack
+    // Return iterator over elements in stack
     @Override
     public Iterator<E> iterator() {
-
         return data.iterator();
     }
 }
