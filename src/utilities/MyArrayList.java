@@ -252,13 +252,13 @@ public class MyArrayList<E> implements ListADT<E>{
         if (minCapacity > currentCapacity){
             int newCapacity = Math.max(currentCapacity * 2, minCapacity);
             Object[] newArray = new Object[newCapacity];
-            coppyArray(array, newArray, size);
+            copyArray(array, newArray, size);
             array = newArray;
         }
     }
 
     // Copies the elements from the source array to the destination array up to the specified length
-    private static void coppyArray(Object[] src, Object[] dest, int length){
+    private static void copyArray(Object[] src, Object[] dest, int length){
         for(int i = 0; i < length; i++){
             dest[i] = src[i];
         }
