@@ -7,20 +7,20 @@ import static org.junit.Assert.*;
 
 public class MyQueueTests {
 
-    @Test
+    @Test //
     public void testConstructor() {
         MyQueue queue = new MyQueue<>(10);
         assertEquals(10, queue.getCapacity());
         assertTrue(queue.isEmpty());
     }
 
-    @Test
+    @Test //
     public void testGetCapacity() {
         MyQueue queue = new MyQueue<>(10000);
         assertEquals(10000, queue.getCapacity());
     }
 
-    @Test
+    @Test //
     public void testGetSize() {
         //MyQueue queue = new MyQueue<>(1);
         MyQueue<Integer> queue = new MyQueue<>(1);
@@ -28,7 +28,7 @@ public class MyQueueTests {
         assertEquals(1, queue.getSize());
     }
 
-    @Test
+    @Test //
     public void testEnqueue() {
         MyQueue queue = new MyQueue<>(3);
         queue.enqueue(1);
@@ -37,7 +37,7 @@ public class MyQueueTests {
         assertEquals(3, queue.getSize());
     }
 
-    @Test
+    @Test //
     public void testDequeue() {
         MyQueue queue = new MyQueue<>(3);
         queue.enqueue(1);
@@ -48,7 +48,7 @@ public class MyQueueTests {
         assertEquals(3, queue.dequeue());
     }
 
-    @Test
+    @Test //
     public void testDequeueAll() {
         MyQueue queue = new MyQueue<>(3);
         queue.enqueue(1);
@@ -58,7 +58,7 @@ public class MyQueueTests {
         assertTrue(queue.isEmpty());
     }
 
-    @Test
+    @Test //
     public void testPeek() {
         MyQueue queue = new MyQueue<>(3);
         queue.enqueue(1);
@@ -67,13 +67,13 @@ public class MyQueueTests {
         assertEquals(1, queue.peek());
     }
 
-    @Test
+    @Test //
     public void testIsEmpty() {
         MyQueue queue = new MyQueue<>(0);
         assertTrue(queue.isEmpty());
     }
 
-    @Test
+    @Test //
     public void testIsFull() {
         MyQueue queue = new MyQueue<>(3);
         queue.enqueue(1);
@@ -82,7 +82,7 @@ public class MyQueueTests {
         assertTrue(queue.isFull());
     }
 
-    @Test
+    @Test //
     public void testEquals() {
         MyQueue queue1 = new MyQueue<>(3);
         queue1.enqueue(1);
@@ -95,7 +95,7 @@ public class MyQueueTests {
         assertTrue(queue1.equals(queue2));
     }
 
-    @Test
+    @Test //
     public void testToArray1() {
         MyQueue queue = new MyQueue<>(3);
         queue.enqueue(1);
@@ -109,7 +109,7 @@ public class MyQueueTests {
         assertEquals(3, array[2]);
     }
 
-    @Test
+    @Test //
     public void testToArray2() {
         MyQueue<Integer> queue = new MyQueue<>(3);
         queue.enqueue(1);
@@ -127,7 +127,7 @@ public class MyQueueTests {
         assertNull(returnedArray[4]);
     }
 
-    @Test
+    @Test //
     public void testIterator() {
         MyQueue queue = new MyQueue<>(3);
         queue.enqueue(1);

@@ -43,6 +43,7 @@ public class MyQueue<E> implements QueueADT<E>{
             throw new NoSuchElementException();
         }
 
+        //
         E dequeued = QueueList.get(0);
         QueueList.remove(0);
         return dequeued;
