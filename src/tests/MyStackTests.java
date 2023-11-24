@@ -7,38 +7,33 @@ import static org.junit.Assert.*;
 
 public class MyStackTests {
 
-    // MyStack constructor test for new MyStack instances
-    @Test
+    @Test // MyStack constructor for new MyStack instances
     public void testConstructor() {
         MyStack stack = new MyStack(5); // New MyStack instance with capacity of 5
         assertEquals(5, stack.getCapacity()); // Test if capacity is 5
         assertTrue(stack.isEmpty()); // test if stack is empty
     }
 
-    // getCapacity() test
-    @Test
+    @Test // getCapacity()
     public void testGetCapacity() {
         MyStack stack = new MyStack(10000); // New MyStack instance with capacity of 10000
         assertEquals(10000, stack.getCapacity()); // Test if capacity is 10000
     }
 
-    // getSize() test
-    @Test
+    @Test // getSize()
     public void testGetSize() {
         MyStack stack = new MyStack(1); // New MyStack instance with capacity of 1
         stack.push(1); // Add element 1 to stack
         assertEquals(1, stack.getSize()); // Test if returned element is 1
     }
 
-    // isEmpty() test
-    @Test
+    @Test // isEmpty()
     public void testIsEmpty() {
         MyStack stack = new MyStack(0); // New MyStack instance with capacity of 0
         assertTrue(stack.isEmpty()); // Test if stack is empty
     }
 
-    // push() test for adding new elements to stack
-    @Test
+    @Test // push() for adding new elements to stack
     public void testPush() {
         MyStack stack = new MyStack(3); // New MyStack instance with capacity of 3
         stack.push(1); // Push element 1
@@ -48,8 +43,7 @@ public class MyStackTests {
         assertEquals(3, stack.getSize()); // Test if stack size is 3
     }
 
-    // peek() test should return top element of stack
-    @Test
+    @Test // peek() should return top element of stack
     public void testPeek() {
         MyStack stack = new MyStack(3); // New MyStack instance with capacity of 3
         stack.push(1); // Push element 1
@@ -58,8 +52,7 @@ public class MyStackTests {
         assertEquals(3, stack.peek()); // Test if top element is 3
     }
 
-    // pop() test
-    @Test
+    @Test // pop()
     public void testPop() {
         MyStack stack = new MyStack(3); // New MyStack instance with capacity of 3
         stack.push(1); // Push element 1
@@ -72,8 +65,7 @@ public class MyStackTests {
         assertEquals(1, stack.getSize()); // Test if stack size is 1 after pop
     }
 
-    // clear() test should clear the whole stack
-    @Test
+    @Test // clear() should clear the whole stack
     public void testClear() {
         MyStack stack = new MyStack(1); // New MyStack instance with capacity of 1
         stack.push(1); // Push element 1
@@ -83,8 +75,7 @@ public class MyStackTests {
         assertEquals(0, stack.getSize()); // Check stack size by checking the size after clear()
     }
 
-    // equals() test
-    @Test
+    @Test // equals()
     public void testEquals() {
         MyStack stack1 = new MyStack(1); // New MyStack instance with capacity of 1
         stack1.push(1); // Push element 1 to stack 1
@@ -93,8 +84,7 @@ public class MyStackTests {
         assertTrue(stack1.equals(stack2)); // Test if stack 1 is equal to stack 2
     }
 
-    // toArray() test should have a length of 3
-    @Test
+    @Test // toArray() should have a length of 3
     public void testToArray1() {
         MyStack stack = new MyStack(3); // New MyStack instance with capacity of 3
         stack.push(1); // Push element 1
@@ -104,8 +94,7 @@ public class MyStackTests {
         assertEquals(3, array.length); // Test if array length is 3
     }
 
-    // toArray(arg) test
-    @Test
+    @Test // toArray(arg)
     public void testToArray2() {
         MyStack<Integer> stack = new MyStack<>(5); // New MyStack instance with capacity of 1
         stack.push(1); // Push element 1
@@ -125,8 +114,7 @@ public class MyStackTests {
         assertEquals(Integer.valueOf(5), returnedArray[4]); // Test if element 5 is at index 4
     }
 
-    // Constains() test
-    @Test
+    @Test // Constains()
     public void testContains() {
         MyStack stack = new MyStack(3); // New MyStack instance with capacity of 1
         stack.push(1); // Push element 1
@@ -135,8 +123,7 @@ public class MyStackTests {
         assertTrue(stack.contains(1)); // Test if stack has element 1
     }
 
-    // search() test should return the position of element from top of stack
-    @Test
+    @Test // search() should return the position of element from top of stack
     public void testSearch() {
         MyStack stack = new MyStack(5); // New MyStack instance with capacity of 1
         stack.push(1); // Push element 1
@@ -147,8 +134,7 @@ public class MyStackTests {
         assertEquals(4, stack.search(2)); // Test the position of element 2 is form the top
     }
 
-    // Iterator() tests next() and hasNext()
-    @Test
+    @Test // Iterator(), next() and, hasNext()
     public void testIterator() {
         MyStack stack = new MyStack(3); // New MyStack instance with capacity of 1
         stack.push(1); // Push element 1
