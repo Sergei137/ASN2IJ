@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 import utilities.MyArrayList;
 
 public class MyStack<E> implements StackADT<E> {
-    private MyArrayList<E> data; // should this be final instead of private?
-    private int capacity; // should this be final instead of private?
+    private final MyArrayList<E> data;
+    private int capacity;
     private int size;
 
     // constructor
