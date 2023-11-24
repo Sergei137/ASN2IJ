@@ -4,12 +4,11 @@ import java.util.NoSuchElementException;
 
 public class MyQueue<E> implements QueueADT<E>{
    // private E[] data;
-    private MyDLL<E> QueueList;
-    private int capacity;
+    private final MyDLL<E> QueueList;
+    private final int capacity;
     private int size;
 
     // constructor
-    @SuppressWarnings("unchecked")
     public MyQueue(int capacity) {
         this.capacity = capacity;
         QueueList = new MyDLL<>();

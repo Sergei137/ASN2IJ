@@ -3,10 +3,6 @@ package utilities;
 
 import java.util.NoSuchElementException;
 
-
-
-
-
 // Represents a dynamic array-based implementation of ListADT interface
 
 public class MyArrayList<E> implements ListADT<E>{
@@ -63,7 +59,6 @@ public class MyArrayList<E> implements ListADT<E>{
         array[index] = toAdd;
         size++;
         return true;
-
     }
 
 
@@ -305,6 +300,5 @@ public class MyArrayList<E> implements ListADT<E>{
 
             return nextElement;
         }
-
     }
 }
