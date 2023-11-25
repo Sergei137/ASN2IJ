@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 public class MyArrayListTests{
 
+    // String list for testing
     private ListADT<String> myList;
 
     @Before

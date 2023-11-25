@@ -65,8 +65,6 @@ public class MyQueueTests {
         queue.enqueue(2); // Enqueue element 2
         queue.enqueue(3); // Enqueue element 3
         assertEquals(1, queue.peek()); // Test if first element is 1
-        assertEquals(2, queue.peek()); // Test if first element is 2
-        assertEquals(3, queue.peek()); // Test if first element is 2
     }
 
     @Test //  isEmpty()
