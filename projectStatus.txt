@@ -1,0 +1,11 @@
+Project Status - OOP3 Assignment 2 Group 1
+
+Project completion: 100%
+
+Deficiencies: None. Parsing logic was removed from requirements during development.
+
+Dependencies: Maven: junit:junit:4.13.2
+
+Additional Libraries: junit-platform-console-standalone-1.10.0.jar
+
+Depreciated: `import exceptions.EmptyQueueException;` in QueueADT, replaced with `import java.util.NoSuchElementException;`
