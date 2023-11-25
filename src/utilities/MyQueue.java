@@ -43,7 +43,7 @@ public class MyQueue<E> implements QueueADT<E>{
             throw new NoSuchElementException();
         }
 
-        //
+        // Remove first element from queue
         E dequeued = QueueList.get(0);
         QueueList.remove(0);
         return dequeued;
@@ -90,7 +90,7 @@ public class MyQueue<E> implements QueueADT<E>{
             return false;
         }
 
-        // Cast thatQueue to MyQueue ????????????
+        // otherQueue is a MyQueue instance
         MyQueue<?> otherQueue = (MyQueue<?>) thatQueue;
 
         // If thatQueue is not the same as thisQueue, return false
